@@ -44,9 +44,9 @@ class LoginRequest extends FormRequest
      */
     public function authenticate()
     {
-        // $user = User::wherePhone($request->phone)->first();
+       $user = User::wherePhone('phone')->first();
 
-        $this->ensureIsNotRateLimited();
+    $this->ensureIsNotRateLimited();
 
         if (! Auth::attempt($this->only('phone', 'password'), $this->boolean('remember'))) {
             RateLimiter::hit($this->throttleKey());

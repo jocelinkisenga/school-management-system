@@ -16,10 +16,11 @@ Route::prefix('eleve')->group(function () {
 
     Route::post('register', [RegisterEleveController::class, 'store'])->name('register.eleve');
 
-    Route::get('login', [LoginEleveController::class, 'create'])
-                ->name('login');
+    // Route::get('login', [LoginEleveController::class, 'create'])
+    //             ->name('login');
 
-    Route::post('login', [LoginEleveController::class, 'store'])->name('eleve.login');
+    // Route::post('login', [LoginEleveController::class, 'store'])->name('eleve.login');
+
     Route::get('profile', [HomeController::class, 'profile'])->name('eleve.profile');
 
     Route::post('logout', [LoginEleveController::class, 'destroy'])

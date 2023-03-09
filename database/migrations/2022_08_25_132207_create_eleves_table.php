@@ -15,7 +15,7 @@ class CreateElevesTable extends Migration
     {
         Schema::create('eleves', function (Blueprint $table) {
             $table->id();
-           
+    $table->foreignId('user_id');
      $table->string("name"); 
       $table->string("suname"); 
       $table->char("gender" ); 
@@ -23,7 +23,6 @@ class CreateElevesTable extends Migration
       $table->foreignId("classe_id" ); 
       $table->date("date_joined"); 
       $table->integer("phone"); 
-      $table->string("password" ); 
       $table->foreignId("option_id");  
       $table->string("ecole_provenance"); 
       $table->string("classe_provenance"); 

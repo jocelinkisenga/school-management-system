@@ -22,3 +22,4 @@ require __DIR__.'/classe.php';
 require __DIR__.'/teacher.php';
 require __DIR__.'/subject.php';
 require __DIR__.'/account.php';
+require __DIR__.'/auth.php';

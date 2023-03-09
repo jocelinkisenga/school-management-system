@@ -13,16 +13,17 @@ Route::prefix('teacher')->group(function () {
 
     Route::post('register', [RegisterTeacherController::class, 'store'])->name('store.teacher');
 
-    Route::get('login', [LoginTeacherController::class, 'create'])
-                ->name('login');
+    // Route::get('login', [LoginTeacherController::class, 'create'])
+    //             ->name('login');
 
-    Route::post('login', [LoginTeacherController::class, 'store'])->name('teacher.login');
+    // Route::post('login', [LoginTeacherController::class, 'store'])->name('teacher.login');
 
 
-    Route::post('logout', [LoginTeacherController::class, 'destroy'])
-                ->name('logout');
+    // Route::post('logout', [LoginTeacherController::class, 'destroy'])
+    //             ->name('logout');
     Route::get('/all',[HomeController::class,'index'])->name("all.teachers");
     Route::get("profile",[HomeController::class,'profile'])->name('profile-teacher');
 
     Route::get('myCourses',[HomeController::class,'mycourses'])->name('teacher.courses');
+    Route::get('myClasses',[HomeController::class,'myclasses'])->name('teacher.classes');
 });

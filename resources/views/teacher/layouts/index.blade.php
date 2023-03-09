@@ -188,7 +188,7 @@
                             <a href="#"><i class="fas fa-user-graduate"></i> <span> Mes classes</span> <span
                                     class="menu-arrow"></span></a>
                             <ul>
-                                <li><a href="students.html"></a></li>
+                                <li><a href="{{route('teacher.classes')}}">Mes classes</a></li>
                             </ul>
                         </li>
                         <li class="submenu">

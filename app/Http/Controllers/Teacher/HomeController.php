@@ -22,5 +22,8 @@ class HomeController extends Controller
         return view('teacher.mycourses.courses');
     }
 
+    public function myclasses(){
+        return view('teacher.mycourses.classes');
+    }
 
 }

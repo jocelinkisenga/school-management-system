@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
+use App\Models\User;
 use App\Providers\RouteServiceProvider;
+use Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -28,11 +30,25 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request)
     {
-        $request->authenticate();
+        $user = User::wherePhone($request->phone)->first();
+        $password = Hash::make($request->password);
 
-        $request->session()->regenerate();
+        if (($user != null) && $user->password == $password) {
+           
+            if ($user->role == 1) {
+                dd($user->role);
+                return redirect()->route('admin.index');
+            } else if ($user->role == 2) {
+                return redirect()->route('profile-teacher');
+            } else {
+                return redirect()->route('eleve.profile');
+            }
+            $request->session()->regenerate();
+        } else {
+            return redirect()->back();
+        }
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+
     }
 
     /**
