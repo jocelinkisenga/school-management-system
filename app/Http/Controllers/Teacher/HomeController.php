@@ -18,5 +18,9 @@ class HomeController extends Controller
         return view('teacher.teacher-dashboard');
     }
 
+    public function mycourses(){
+        return view('teacher.mycourses.courses');
+    }
+
 
 }

@@ -23,4 +23,6 @@ Route::prefix('teacher')->group(function () {
                 ->name('logout');
     Route::get('/all',[HomeController::class,'index'])->name("all.teachers");
     Route::get("profile",[HomeController::class,'profile'])->name('profile-teacher');
+
+    Route::get('myCourses',[HomeController::class,'mycourses'])->name('teacher.courses');
 });
