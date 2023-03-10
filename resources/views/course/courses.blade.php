@@ -12,8 +12,8 @@
                         </ul>
                      </div>
                      <div class="col-auto text-right float-right ml-auto">
-                        <a href="#" class="btn btn-outline-primary mr-2"><i class="fas fa-download"></i> Download</a>
-                        <a href="add-subject.html" class="btn btn-primary"><i class="fas fa-plus"></i></a>
+                       
+                        <a href="{{route('create.course')}}" class="btn btn-primary"><i class="fas fa-plus"></i></a>
                      </div>
                   </div>
                </div>

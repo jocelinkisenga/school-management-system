@@ -161,7 +161,13 @@
                         </div>
                         <a class="dropdown-item" href="profile.html">My Profile</a>
                         <a class="dropdown-item" href="inbox.html">Inbox</a>
-                        <a class="dropdown-item" href="login.html">Logout</a>
+                        <a class="dropdown-item">
+                            <form action="{{route('logout')}}" method="POST">
+                               @csrf
+                               <button type="submit">logout</button>
+                            </form>
+    
+                         </a>
                     </div>
                 </li>
 

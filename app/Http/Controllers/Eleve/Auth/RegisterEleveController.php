@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Eleve\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\Eleve;
+use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
@@ -41,8 +42,16 @@ class RegisterEleveController extends Controller
         
         $path=$request->file('photo')->storeAs('uploads', $fileName, 'public');
 
+        $user = User::create([
+            'name' => $request->name,
+            'phone' => $request->phone,
+            "password"=>Hash::make($request->password),
+            'role' => 3 
+        ]);
+     
         
         Eleve::create([
+                'user_id' => $user->id,
                 "name" =>$request->name,
                 "suname"=>$request->suname,
                  "gender" =>$request->gender,
@@ -50,7 +59,6 @@ class RegisterEleveController extends Controller
                  "classe_id" =>$request->classe_id,
                  "date_joined"=>$request->date_joined,
                  "phone"=>$request->phone,
-                 "password" =>Hash::make($request->password),
                  "option_id" =>$request->option_id,
                  "ecole_provenance"=>$request->ecole_provenance,
                  "classe_provenance"=>$request->classe_provenance,

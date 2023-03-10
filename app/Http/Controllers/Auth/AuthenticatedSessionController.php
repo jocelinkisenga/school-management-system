@@ -30,23 +30,43 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request)
     {
-        $user = User::wherePhone($request->phone)->first();
-        $password = Hash::make($request->password);
+        // $user = User::wherePhone($request->phone)->first();
 
-        if (($user != null) && $user->password == $password) {
-           
-            if ($user->role == 1) {
-                dd($user->role);
-                return redirect()->route('admin.index');
-            } else if ($user->role == 2) {
-                return redirect()->route('profile-teacher');
-            } else {
-                return redirect()->route('eleve.profile');
-            }
-            $request->session()->regenerate();
-        } else {
-            return redirect()->back();
-        }
+        $request->authenticate();
+
+        $request->session()->regenerate();
+
+    
+
+                if (Auth::user()->role == 1) {
+                   
+                    return redirect(route('admin.index'));
+                    
+                } else if (Auth::user()->role == 2) {
+                    return redirect()->route('profile-teacher');
+                } else {
+                    return redirect()->route('eleve.profile');
+                }
+
+
+        // if ($user != null) {
+
+        //     $password = Hash::check($request->password, $user->password);
+
+        //     if ($password == true) {
+
+                
+
+
+        //         $request->session()->regenerate();
+        //     }
+
+
+        // } else {
+        //     return redirect()->back();
+        // }
+        
+
 
 
     }

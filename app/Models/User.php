@@ -50,4 +50,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(Role::class);
     }
+
+    public function teacher(){
+        return $this->hasOne(Teacher::class);
+    }
+
+    public function affectation(){
+        return $this->hasMany(Affectation::class);
+    }
 }

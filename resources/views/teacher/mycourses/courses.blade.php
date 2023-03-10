@@ -33,31 +33,33 @@
                             </tr>
                          </thead>
                          <tbody> 
-                      <tr>
+                           @foreach ($courses as $key => $course)
+                           <tr>
                               
-                         <td>
-                            <h2>
-                               <a></a>
-                            </h2>
-                         </td>
-                        
-
-                        <td class=""></td>
-                      
-                         <td></td>
-                         <td></td>
-                         <td class="text-right">
-                            <div class="actions">
-                               <a href="" class="btn btn-sm bg-success-light mr-2">
-                               <i class="fas fa-pen"></i>
-                               </a>
-                               <a href="#" class="btn btn-sm bg-danger-light">
-                               <i class="fas fa-trash"></i>
-                               </a>
-                            </div>
-                         </td>
-                      </tr>
-                      
+                              <td>
+                                 <h2>
+                                    <a>{{$key+1}}</a>
+                                 </h2>
+                              </td>
+                             
+     
+                             <td class="">{{$course->name}}</td>
+                           
+                              <td>{{$course->option}}</td>
+                              <td>{{$course->class_name}} é</td>
+                              <td class="text-right">
+                                 <div class="actions">
+                                    <a href="{{route('teacher.course.detail',['id'=> $course->id])}}" title="detail" class="btn btn-sm bg-success-light mr-2">
+                                    <i class="fas fa-pen"></i>
+                                    </a>
+                                    <a href="#" class="btn btn-sm bg-danger-light">
+                                    <i class="fas fa-trash"></i>
+                                    </a>
+                                 </div>
+                              </td>
+                           </tr>
+                           
+                           @endforeach
                 
                             
                                

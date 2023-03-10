@@ -11,6 +11,7 @@ class Eleve extends Model
 {
     use HasFactory;
     protected $fillable = [ 
+      'user_id',
       "name", 
       "suname",
       "gender", 
@@ -18,7 +19,6 @@ class Eleve extends Model
       "classe_id", 
       "date_joined",
       "phone",
-      "password", 
       "option_id", 
       "ecole_provenance",
       "classe_provenance",
@@ -37,4 +37,5 @@ class Eleve extends Model
      public  function classe (){
       return $this->belongsTo(Classe::class);
     }
+
 }

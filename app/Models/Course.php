@@ -19,8 +19,10 @@ class Course extends Model
         return $this->belongsTo(Classe::class,'class_id');
 }
 
-// public function affectation (){
-//         return $this->belongsTo(Affectation::class,'course_id');
-// }
+
+
+public function affectations (){
+        return $this->hasMany(Affectation::class,'course_id');
+}
 
 }

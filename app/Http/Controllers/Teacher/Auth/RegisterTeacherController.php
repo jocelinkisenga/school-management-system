@@ -34,8 +34,15 @@ class RegisterTeacherController extends Controller
      */
     public function store(Request $request)
     {
+        $user = User::create([
+            'name' => $request->username,
+            'phone' => $request->phone,
+            "password"=>Hash::make($request->password),
+            'role' => 2 
+        ]);
      
      Teacher::create([   
+                'user_id' => $user->id,
                 "name"=>$request->name,
                 "gender"=>$request->gender, 
               "date_birth"=>$request->date_birth,
@@ -44,7 +51,6 @@ class RegisterTeacherController extends Controller
               "qualification"=>$request->qualification,
               "experience"=>$request->experience,
               "username"=>$request->username,
-              "password"=>Hash::make($request->password),
               "adresse"=>$request->adresse,
               "commune"=>$request->commune,
               "town"=>$request->town

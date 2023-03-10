@@ -26,4 +26,5 @@ Route::prefix('teacher')->group(function () {
 
     Route::get('myCourses',[HomeController::class,'mycourses'])->name('teacher.courses');
     Route::get('myClasses',[HomeController::class,'myclasses'])->name('teacher.classes');
+    Route::get('/courseDetail/{id}',[HomeController::class,'courseDetail'])->name('teacher.course.detail');
 });
