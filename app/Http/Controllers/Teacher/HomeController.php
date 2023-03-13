@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Teacher;
 
 use App\Http\Controllers\Controller;
 use App\Models\Course;
+use App\Models\Homework;
+use App\Models\Lesson;
 use App\Models\Teacher;
 use Auth;
 use DB;
@@ -46,8 +48,11 @@ class HomeController extends Controller
         return view('teacher.mycourses.classes');
     }
 
-    public function courseDetail(){
-        return view('course.TeacherCourseDetail');
+    public function courseDetail(int $courseId){
+        $course = Course::findOrFail($courseId);
+        $lessons = Lesson::latest()->whereCourseId($courseId)->get();
+        $homeworks = Homework::latest()->whereCourseId($courseId)->get();
+        return view('course.TeacherCourseDetail',compact('course','lessons','homeworks'));
     }
 
 }

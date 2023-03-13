@@ -1,6 +1,7 @@
 <?php
 
-
+use App\Http\Controllers\HomeWorkController;
+use App\Http\Controllers\LessonController;
 use App\Http\Controllers\Teacher\Auth\RegisterTeacherController;
 use App\Http\Controllers\Teacher\Auth\LoginTeacherController;
 use App\Http\Controllers\Teacher\HomeController;
@@ -23,8 +24,11 @@ Route::prefix('teacher')->group(function () {
     //             ->name('logout');
     Route::get('/all',[HomeController::class,'index'])->name("all.teachers");
     Route::get("profile",[HomeController::class,'profile'])->name('profile-teacher');
-
+    Route::get('/addLesson/{id}',[LessonController::class,'create'])->name('create-lesson');
+    Route::get('/addHomework/{id}',[HomeWorkController::class,'create'])->name('create-homework');
     Route::get('myCourses',[HomeController::class,'mycourses'])->name('teacher.courses');
     Route::get('myClasses',[HomeController::class,'myclasses'])->name('teacher.classes');
     Route::get('/courseDetail/{id}',[HomeController::class,'courseDetail'])->name('teacher.course.detail');
+    Route::post('/addLesson', [LessonController::class,'store'])->name('store-lesson');
+    Route::post('addhomework',[HomeWorkController::class,'store'])->name('store-homework');
 });

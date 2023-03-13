@@ -21,7 +21,7 @@
                                         <h5 class="card-title">Toutes les lessons</h5>
                                     </div>
                                     <div class="col-6">
-                                        <span class="float-right view-link"><a href="#">Ajouter une lesson</a></span>
+                                        <span class="float-right view-link"><a href="{{route('create-lesson',['id'=>$course->id])}}">Ajouter une lesson</a></span>
                                     </div>
                                 </div>
                             </div>
@@ -29,57 +29,25 @@
                                 <div class="table-responsive lesson">
                                     <table class="table table-center">
                                         <tbody>
+                                            @foreach ($lessons as $item)
                                             <tr>
                                                 <td>
                                                     <div class="date">
-                                                        <b>Aug 4, Tuesday</b>
-                                                        <p>2.30pm - 3.30pm (60min)</p>
+                                                        <b>{{$item->jour_j}}</b>
+                                                        <p>{{$item->heure_debut}}- {{$item->heure_fin}} ()</p>
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <div class="date">
-                                                        <b>Lessons 30</b>
-                                                        <p>3.1 Ipsuum dolor</p>
+                                                        <b>{{$item->title}}</b>
+                                                        <p></p>
                                                     </div>
                                                 </td>
                                                 <td><a href="#">Confirmed</a></td>
                                                 <td><button type="submit"
                                                         class="btn btn-info">Reschedule</button></td>
                                             </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="date">
-                                                        <b>Aug 5, Wednesday</b>
-                                                        <p>3.00pm - 4.30pm (90min)</p>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="date">
-                                                        <b>Lessons 31</b>
-                                                        <p>3.2 Ipsuum dolor</p>
-                                                    </div>
-                                                </td>
-                                                <td><a href="#">Confirmed</a></td>
-                                                <td><button type="submit"
-                                                        class="btn btn-info">Reschedule</button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="date">
-                                                        <b>Aug 6, Thursday</b>
-                                                        <p>11.00am - 12.00pm (20min)</p>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="date">
-                                                        <b>Lessons 32</b>
-                                                        <p>3.3 Ipsuum dolor</p>
-                                                    </div>
-                                                </td>
-                                                <td><a href="#">Confirmed</a></td>
-                                                <td><button type="submit"
-                                                        class="btn btn-info">Reschedule</button></td>
-                                            </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
@@ -94,66 +62,35 @@
                                         <h5 class="card-title">Tous les devoirs </h5>
                                     </div>
                                     <div class="col-6">
-                                        <span class="float-right view-link"><a href="#">Ajouter un devoir</a></span>
+                                        <span class="float-right view-link"><a href="{{route('create-homework',['id'=>$course->id])}}">Ajouter un devoir</a></span>
                                     </div>
                                 </div>
                             </div>
                             <div class="pt-3 pb-3">
                                 <div class="table-responsive lesson">
                                     <table class="table table-center">
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    <div class="date">
-                                                        <b>Aug 4, Tuesday</b>
-                                                        <p>2.30pm - 3.30pm (60min)</p>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="date">
-                                                        <b>Lessons 30</b>
-                                                        <p>3.1 Ipsuum dolor</p>
-                                                    </div>
-                                                </td>
-                                                <td><a href="#">Confirmed</a></td>
-                                                <td><button type="submit"
-                                                        class="btn btn-info">Reschedule</button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="date">
-                                                        <b>Aug 5, Wednesday</b>
-                                                        <p>3.00pm - 4.30pm (90min)</p>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="date">
-                                                        <b>Lessons 31</b>
-                                                        <p>3.2 Ipsuum dolor</p>
-                                                    </div>
-                                                </td>
-                                                <td><a href="#">Confirmed</a></td>
-                                                <td><button type="submit"
-                                                        class="btn btn-info">Reschedule</button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="date">
-                                                        <b>Aug 6, Thursday</b>
-                                                        <p>11.00am - 12.00pm (20min)</p>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="date">
-                                                        <b>Lessons 32</b>
-                                                        <p>3.3 Ipsuum dolor</p>
-                                                    </div>
-                                                </td>
-                                                <td><a href="#">Confirmed</a></td>
-                                                <td><button type="submit"
-                                                        class="btn btn-info">Reschedule</button></td>
-                                            </tr>
-                                        </tbody>
+                                        <table class="table table-center">
+                                            <tbody>
+                                                @foreach ($homeworks as $item)
+                                                <tr>
+                                                    <td>
+                                                        {{-- <div class="date">
+                                                            <b>{{$item->jour_j}}</b>
+                                                            <p>{{$item->heure_debut}}- {{$item->heure_fin}} ()</p>
+                                                        </div> --}}
+                                                    </td>
+                                                    <td>
+                                                        <div class="date">
+                                                            <b>{{$item->title}}</b>
+                                                            <p></p>
+                                                        </div>
+                                                    </td>
+                                                    <td><a href="#">Confirmed</a></td>
+                                                    <td><button type="submit"
+                                                            class="btn btn-info">Reschedule</button></td>
+                                                </tr>
+                                                @endforeach
+                                            </tbody>
                                     </table>
                                 </div>
                             </div>

@@ -9,10 +9,8 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col">
-                    <h3 class="page-title">Add Exam</h3>
+                    <h3 class="page-title">Ajouter un devoir au cours {{$course->name}}</h3>
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="exam.html">Exam</a></li>
-                        <li class="breadcrumb-item active">Add Exam</li>
                     </ul>
                 </div>
             </div>
@@ -22,67 +20,29 @@
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-body">
-                        <form>
+                        <form action="{{route('store-homework')}}" method="POST" enctype="multipart/form-data">
+                            @csrf
                             <div class="row">
                                 <div class="col-12">
-                                    <h5 class="form-title"><span>Exam Information</span></h5>
+                                    <h5 class="form-title"><span>information sur le devoir</span></h5>
                                 </div>
+                                <input type="hidden" name="course_id" id="" value="{{$course->id}}">
                                 <div class="col-12 col-sm-6">
                                     <div class="form-group">
-                                        <label>Exam Name</label>
-                                        <input type="text" class="form-control">
+                                        <label>intutilé</label>
+                                        <input type="text" class="form-control" name="title">
                                     </div>
                                 </div>
-                                <div class="col-12 col-sm-6">
+                                <div class="col-12 col-sm-12">
                                     <div class="form-group">
-                                        <label>Class</label>
-                                        <select class="form-control">
-                                            <option>Select Class</option>
-                                            <option>LKG</option>
-                                            <option>UKG</option>
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
-                                            <option>6</option>
-                                            <option>7</option>
-                                            <option>8</option>
-                                            <option>9</option>
-                                            <option>10</option>
-                                            <option>11</option>
-                                            <option>12</option>
-                                        </select>
+                                        <label>fichier</label>
+                                        <input type="file" class="form-control" name="fichier">
                                     </div>
                                 </div>
-                                <div class="col-12 col-sm-6">
+                                <div class="col-12 col-sm-12">
                                     <div class="form-group">
-                                        <label>Subject</label>
-                                        <input type="text" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <div class="form-group">
-                                        <label>Fees</label>
-                                        <input type="text" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <div class="form-group">
-                                        <label>Start Time</label>
-                                        <input type="time" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <div class="form-group">
-                                        <label>End Time</label>
-                                        <input type="time" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <div class="form-group">
-                                        <label>Event Date</label>
-                                        <input type="date" class="form-control">
+                                        <label>description</label>
+                                        <textarea type="text" class="form-control" name="description"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-12">
